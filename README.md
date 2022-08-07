@@ -6,7 +6,7 @@
 
 ### This repository is aimed to build, with a Makefile, 
 ### code for the HOST and the MSP32 Platform.
-### Please read instructions within the m2/src/Markefile
+### Please read instructions within the m2/src/Makefile
 
 
 ### The repository is organized in one folder including:
