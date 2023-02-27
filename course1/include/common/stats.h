@@ -39,12 +39,7 @@
  * @return void (prints out to the console)
  */
 
-void print_statistics(unsigned int mean,unsigned int median,unsigned int max, unsigned int min){
-    printf("The mean is: %u\n", mean);
-    printf("The median is: %u\n", median);
-    printf("The maximum value is: %u\n", max);
-    printf("The minimum value is: %u\n", min);
-}
+void print_statistics(unsigned int mean,unsigned int median,unsigned int max, unsigned int min);
 
 /**
  * @brief This function prints a given array to the console.
@@ -58,14 +53,7 @@ void print_statistics(unsigned int mean,unsigned int median,unsigned int max, un
  * @return void (prints out to the console)
  */
 
-void print_array(unsigned char data[], unsigned int size){
-    printf("The data is:\n");
-    for (int i = 0; i < size; i++){
-        printf("%d\n", *data);
-        data++;
-    }
-
-}
+void print_array(unsigned char data[], unsigned int size);
 
 /**
  * @brief This funtion swap two variables values by accesing their address.
@@ -77,11 +65,8 @@ void print_array(unsigned char data[], unsigned int size){
  * @param b A pointer to an unsigned char variable 
  */
 //Funtion to swap values
-void swap(unsigned char *a, unsigned char *b){
-    unsigned char temp = *a;
-    *a = *b;
-    *b = temp;    
-}
+void swap(unsigned char *a, unsigned char *b); 
+
 
 
 /**
@@ -96,17 +81,7 @@ void swap(unsigned char *a, unsigned char *b){
  *
  */
 
-void sort_array(unsigned char data[], unsigned int size){
-    int i,j;
-    unsigned int a,b;
-    for(i = 0; i < size; i++){
-        for(j = 0; j < (size-1); j++){
-            if (data[i] > data[j]){
-                swap(&data[j],&data[i]);
-            }
-        }
-    }
-}
+void sort_array(unsigned char data[], unsigned int size);
 
 /**
  * @brief This funtion returns the median value of an array.
@@ -120,16 +95,7 @@ void sort_array(unsigned char data[], unsigned int size){
  * @return median as unsigned integer 
  */
 
-unsigned int find_median(unsigned char data[], unsigned int size){
-    int index = size/2;
-    if ((size%2) == 0){
-        return (((unsigned int)data[index-1] + (unsigned int)data[index]) / 2); 
-    }
-    else{
-        return (unsigned int)data[index];
-    }
-}
-
+unsigned int find_median(unsigned char data[], unsigned int size);
 
 /**
  * @brief This funtion returns the mean value of an array.
@@ -143,15 +109,7 @@ unsigned int find_median(unsigned char data[], unsigned int size){
  * @return mean as unsigned integer 
  */
 
-unsigned int find_mean(unsigned char *data, unsigned int size){
-    int i;
-    unsigned int sum = 0;
-    for (i=0; i< size; i++){
-        sum += *data;
-        data++;
-    }
-    return (sum/size);
-}
+unsigned int find_mean(unsigned char *data, unsigned int size);
 
 /**
  * @brief This funtion returns the maximum value of an array.
@@ -165,10 +123,7 @@ unsigned int find_mean(unsigned char *data, unsigned int size){
  * @return maximum value as unsigned integer 
  */
 
-unsigned int find_maximum(unsigned char data[]){
-    return data[0];
-}
-
+unsigned int find_maximum(unsigned char data[]);
 
 /**
  * @brief This funtion returns the minimum value of an array.
@@ -183,8 +138,6 @@ unsigned int find_maximum(unsigned char data[]){
  * @return maximum value as unsigned integer 
  */
 
-unsigned int find_minimum(unsigned char data[], unsigned int size){
-    return data[size-1];
-}
+unsigned int find_minimum(unsigned char data[], unsigned int size);
 
 #endif /* __STATS_H__ */

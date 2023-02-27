@@ -20,35 +20,73 @@
  */
 
 
-
-#include <stdio.h>
 #include "stats.h"
+#include "platform.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
 
-void main() {
-
-  unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
-                              114, 88,   45,  76, 123,  87,  25,  23,
-                              200, 122, 150, 90,   92,  87, 177, 244,
-                              201,   6,  12,  60,   8,   2,   5,  67,
-                                7,  87, 250, 230,  99,   3, 100,  90};
-
-  /* Other Variable Declarations Go Here */
-  unsigned int mean;
-  unsigned int median;
-  unsigned int max;
-  unsigned int min;
-
-  /* Statistics and Printing Functions Go Here */
-  sort_array(test,SIZE);
-  print_array(test,SIZE); //To check it was correctly sorted
-  max = find_maximum(test);
-  min = find_minimum(test,SIZE);
-  mean = find_mean(test,SIZE);
-  median = find_median(test,SIZE);
-  print_statistics(mean, median, max, min);
+/* Add other Implementation File Code Here */
+void print_statistics(unsigned int mean,unsigned int median,unsigned int max, unsigned int min){
+    PRINTF("The mean is: %u\n", mean);
+    PRINTF("The median is: %u\n", median);
+    PRINTF("The maximum value is: %u\n", max);
+    PRINTF("The minimum value is: %u\n", min);
 }
 
-/* Add other Implementation File Code Here */
+
+void print_array(unsigned char data[], unsigned int size){
+    #ifdef VERBOSE
+    PRINTF("The data is:\n");
+    for (int i = 0; i < size; i++){
+	PRINTF("%d\n", *data);
+	data++;
+    }
+    #endif
+}
+
+void swap(unsigned char *a, unsigned char *b){
+    unsigned char temp = *a;
+    *a = *b;
+    *b = temp;    
+}
+
+void sort_array(unsigned char data[], unsigned int size){
+    int i,j;
+    for(i = 0; i < size; i++){
+        for(j = 0; j < (size-1); j++){
+            if (data[i] > data[j]){
+                swap(&data[j],&data[i]);
+            }
+        }
+    }
+}
+
+unsigned int find_median(unsigned char data[], unsigned int size){
+    int index = size/2;
+    if ((size%2) == 0){
+        return (((unsigned int)data[index-1] + (unsigned int)data[index]) / 2); 
+    }
+    else{
+        return (unsigned int)data[index];
+    }
+}
+
+unsigned int find_mean(unsigned char *data, unsigned int size){
+    int i;
+    unsigned int sum = 0;
+    for (i=0; i< size; i++){
+        sum += *data;
+        data++;
+    }
+    return (sum/size);
+}
+
+unsigned int find_maximum(unsigned char data[]){
+    return data[0];
+}
+
+unsigned int find_minimum(unsigned char data[], unsigned int size){
+    return data[size-1];
+}
+

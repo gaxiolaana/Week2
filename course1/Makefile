@@ -34,7 +34,7 @@ include sources.mk
 PLATFORM = HOST
 
 # Architectures Specific Flags (MSP432)
-LINKER_FILE = ../msp432p401r.lds
+LINKER_FILE = msp432p401r.lds
 CPU = cortex-m4
 ARCH = thumb
 MARCH = armv7e-m
@@ -45,13 +45,13 @@ SPECS = nosys.specs
 # Compiler Flags and Defines (common)
 TARGET = c1m2
 STD = c99
-CPPFLAGS = -MT $@ -MD -MP -MF $*.d
-GENERALFLAGS = -Wall -Werror -g -O0
+CPPFLAGS = -MT $@ -MD -MP -MF $*.d -lm
+GENERALFLAGS = -Wall -Werror -g -O0 
                
 ifeq ($(PLATFORM),HOST)
 	# Compiler Flags and Defines (HOST)  
 	CC = gcc
-	CFLAGS = $(GENERALFLAGS) -std=$(STD) $(INCLUDESGCC) -DHOST
+	CFLAGS = $(GENERALFLAGS) -std=$(STD) $(INCLUDESGCC) -DHOST -DCOURSE1 -DVERBOSE
 	LDFLAGS = -Wl,-Map=$(TARGET).map
 	SRCS = $(SOURCESGCC)
 	SIZE = size
