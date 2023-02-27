@@ -71,8 +71,8 @@ uint8_t * my_memmove(uint8_t * src, uint8_t * dst, uint8_t length){
       }
     }
     else {
+      //overlap
       tmp = my_memcopy(src, tmp, length);
-      printf("overlap!!!!\n");
       for(uint8_t i=0; i<length; i++){    
          *dst = *tmp;
          dst++;

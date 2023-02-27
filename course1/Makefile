@@ -51,7 +51,7 @@ GENERALFLAGS = -Wall -Werror -g -O0
 ifeq ($(PLATFORM),HOST)
 	# Compiler Flags and Defines (HOST)  
 	CC = gcc
-	CFLAGS = $(GENERALFLAGS) -std=$(STD) $(INCLUDESGCC) -DHOST -DCOURSE1 -DVERBOSE
+	CFLAGS = $(GENERALFLAGS) -std=$(STD) $(INCLUDESGCC) -DHOST -DCOURSE1 
 	LDFLAGS = -Wl,-Map=$(TARGET).map
 	SRCS = $(SOURCESGCC)
 	SIZE = size
