@@ -10,9 +10,11 @@
 
 
 ### The repository is organized in one folder including:
-###      include folder -> include files for compilation (CMSIS, common, msp432)
-###      src-> source files and Makefile
+###      Makefile
+###      Sources.mk
 ###      msp432p401r.lds -> Linker file for the arm-none-eabi-gcc crosscompiler
+###      include folder -> include files for compilation (CMSIS, common, msp432)
+###      src-> source files
 */
 
 
